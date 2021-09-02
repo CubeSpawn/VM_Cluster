@@ -19,13 +19,16 @@ docker-machine create  -d virtualbox --virtualbox-boot2docker-url https://releas
 Once the virtual machine is running connect with docker-machine ssh CS-VM-03
 
 you'll be at the 
+
 docker@CS-VM-03:~$
 sudo su
 now your at the root prompt
 root@CS-VM-03:~# 
+
 run
 passwd rancher
 I used "cubespawn" as the password
+
 I then used the virtualbox GUI to set "Adapter 2 to "bridged" 
 under the "advanced" dropdown
 I set promiscuous mode to "Allow All" 

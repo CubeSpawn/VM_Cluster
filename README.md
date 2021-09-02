@@ -9,11 +9,14 @@ all 9 machines have passwordless ssh
 
 using:
 $ssh-keygen -f "/home/$USERNAME/.ssh/known_hosts" -R "IPxx.xx.xx.xx"
+
 and
 ssh-copy-id $USER@IPxx.xx.xx.xx
 
 and passwordless sudo
+
 sudo visudo
+
 user       ALL = (ALL) NOPASSWD: ALL
 
 
