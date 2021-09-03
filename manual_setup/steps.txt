@@ -1,30 +1,78 @@
-assumes git is installed
+Assumptions:
+9 physical machines 
 
-This file is to encapsulate the manual steps
-before turning them into ansible/terraform specs
+4 core i5 CPUs with 8 GB ram
 
-on a node host in the /home/$USER folder
+running Ubuntu 20.04 desktop
+
+8 VM hosts + 1 jump server
+
+first command:
+
+sudo apt install git 
+
+now:
+
+Establish passwordless ssh 
+
+on each machine:
+
+ssh-keygen -t rsa -b 4096
+
+then 
+
+ssh-copy-id $USER@ipaddress 
+
+to the jump server
+
+then, same from the jump server to each host
+
+then establish passwordless sudo on each of the host machines
+
+sudo visudo  #(uses nano on ubuntu)
+
+add this line to the end of the sudoers file
+
+$USER ALL=(ALL) NOPASSWD:ALL
+
+with passwordless ssh and passwdordless sudo, the setup scripts should run smoothly
+
+you can now ssh to each host machine from the jump server with
+
+ssh user@vmhost_ip-1
+
+then
+
+cd ~
 
 git clone https://github.com/CubeSpawn/VM_Cluster.git
- 
 
-first install docker-machine on the host
+cd VM_Cluster/bin
 
-In /home/@USER/VM_Cluster/bin folder
-run 
-$ inst_docker-machine.sh
-then:
+then 
+
+ssh $USER@VM_ip "bash -s" <./requirements.sh
+
+on each of the nodes
+
+which installs Docker, Docker-machine virtualbox and Vagrant
+
+after this completes, you can run
+
 docker-machine create  -d virtualbox --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso --virtualbox-memory 3072 CS-VM-0x
 
-Once the virtual machine is running connect with docker-machine ssh CS-VM-03
+ssh to the host 
+
+you can connect to the VM with docker-machine ssh CS-VM-0x 
+
+where "x" is the VM number
 
 you'll be at the 
 
-docker@CS-VM-03:~$
+docker@CS-VM-0x:~$
 sudo su
-now your at the root prompt
+now your at the root prompt:
 root@CS-VM-03:~# 
-
 run
 passwd rancher
 I used "cubespawn" as the password
@@ -36,7 +84,7 @@ I set promiscuous mode to "Allow All"
 back at the root prompt, 
 I set the RancherOS console to "Ubuntu" with
 ros console switch Ubuntu
-this swaps out the consol container and reboots the interface, but not the VM
+this swaps out the console container and reboots the interface, but not the VM
 dropping you back to the host console
 
 reconnect with docker-machine ssh CS-VM-03
@@ -46,4 +94,5 @@ ifconfig eth2 10.42.0.43 netmask 255.255.255.0
 you should now be able to ssh to the VM from your jump server with
 ssh rancher@10.42.0.43
 
+now we can install the cluster infrastructure
 
