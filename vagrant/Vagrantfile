@@ -2,11 +2,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure ("2") do |config|
-    configure.vm.box = "chrisurwin/RancherOS"
-    configure.vm.box_version = "1.5.8"
-    configure.ssh.username = "rancher"
-    configure.vm.hostname = "CS-VM-03"
-    configure.vm.synced_folder "/", "/home/rancher/shared"
+    config.vm.box = "chrisurwin/RancherOS"
+    config.vm.box_version = "1.5.8"
+    config.ssh.username = "rancher"
+    config.vm.hostname = "CS-VM-03"
+    config.vm.synced_folder "/", "/home/rancher/shared"
 #
 end    
 
