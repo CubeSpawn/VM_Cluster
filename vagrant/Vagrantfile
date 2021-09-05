@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require_relative 'vagrant_rancheros_guest_plugin.rb'
+
 Vagrant.configure ("2") do |config|
     config.vm.box = "chrisurwin/RancherOS"
     #config.vm.box_version = "1.5.8"
