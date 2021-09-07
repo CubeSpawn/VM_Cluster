@@ -7,7 +7,7 @@ echo "docker-machine"
 docker-machine --version
 echo "Vagrant"
 vagrant --version
-echo"Nomad"
+echo "Nomad"
 nomad --version
 echo "Ansible"
 ansible --version
