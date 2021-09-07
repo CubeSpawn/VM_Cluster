@@ -1,7 +1,7 @@
-echo "if you already have a local key, say no!"
+echo "if this prompts you to overwrite your local key, say no!"
 ssh-keygen -t rsa -b 4096
 
-#edit this section to have all the ips EXCEPT the local one!
+#edit this section to have all the IPs EXCEPT the local one!
 #comment the local one out of the pool
 
 ssh-copy-id cubespawn@10.42.0.201 

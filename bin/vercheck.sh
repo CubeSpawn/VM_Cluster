@@ -1,0 +1,9 @@
+git --version
+docker --version
+docker-machine --version
+vagrant --version
+nomad --version
+ansible --version
+consul --version
+terraform --version
+vboxmanage --version

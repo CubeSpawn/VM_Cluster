@@ -1,4 +1,15 @@
-Assumptions:
+The excercise starts with stepping through the config process manually
+then once the requirements and steps are established, the goal will be to 
+incrementally automate all of it.
+
+Initial assumptions:
+
+git installed
+
+sudo apt update
+sudo apt install git
+git --version
+
 9 physical machines 
 
 4 core i5 CPUs with 8 GB ram
@@ -17,7 +28,9 @@ Establish passwordless ssh
 
 on each machine:
 
-ssh-keygen -t rsa -b 4096
+ssh-keygen -t rsa -b 4096 
+
+if this comes back with a file overwrite? prompt say no
 
 then 
 
@@ -36,6 +49,7 @@ add this line to the end of the sudoers file
 $USER ALL=(ALL) NOPASSWD:ALL
 
 with passwordless ssh and passwdordless sudo, the setup scripts should run smoothly
+[update] this also prepares the way for ansible
 
 you can now ssh to each host machine from the jump server with
 
@@ -44,6 +58,10 @@ ssh user@vmhost_ip-1
 then
 
 cd ~
+
+mkdir repos
+
+cd repos
 
 git clone https://github.com/CubeSpawn/VM_Cluster.git
 
