@@ -12,7 +12,4 @@ vagrant plugin install vagrant-vboxmanage
 
 vagrant plugin install vagrant-vbguest
 
-
-
-cd ~/
-vagrant --version
+exit 0

@@ -1,3 +1,4 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #From: https://docs.docker.com/engine/install/ubuntu/
 
 sudo apt update
@@ -17,12 +18,14 @@ sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #From https://github.com/docker/machine/releases/
 
 curl -L https://github.com/docker/machine/releases/download/v0.16.2/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&
     chmod +x /tmp/docker-machine &&
     sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #From https://linuxize.com/post/how-to-install-virtualbox-on-ubuntu-20-04/
 
 sudo apt update
@@ -36,7 +39,7 @@ sudo tee -a /etc/apt/sources.list.d/virtualbox.list
 sudo apt update
 sudo apt install -y virtualbox-6.1
 
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #From https://linuxize.com/post/how-to-install-vagrant-on-ubuntu-20-04/
 
 cd ~/
@@ -51,16 +54,11 @@ vagrant plugin install vagrant-vboxmanage
 
 vagrant plugin install vagrant-vbguest
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 ##todo
 #add ansible
-
-
-
-
-
-
-
-
-
-cd ~/
-vagrant --version
+#add nomad
+#add consul
+#add terraform
