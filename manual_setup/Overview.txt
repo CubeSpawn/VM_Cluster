@@ -1,0 +1,29 @@
+The general plan is simple in concept:
+
+1. Deploy a cluster/private cloud across several pieces of hardware
+
+2. place a container-host VM on each physical machine
+
+3. establish a container/microservice system to support the CubeSpawn simulator
+
+Easy! right?  ;-/ ;-)
+
+
+
+
+
+         |------------|
+         |            |
+         |++++++++++++| 
+         |         *  | 
+         |  *  *  *   | 
+         |++++++++++++| 
+         |            | 
+         |            | 
+         |____________| 
+         |      *     | 
+         |    *     * | 
+         |____________| 
+         |            | 
+         |            |
+         |------------|

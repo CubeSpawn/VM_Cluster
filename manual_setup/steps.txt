@@ -1,11 +1,12 @@
-The excercise starts with stepping through the config process manually
-then once the requirements and steps are established, the goal will be to 
+The excercise starts with stepping through the config process manually,
+then, once the requirements and steps are established, the goal will be to 
 incrementally automate all of it.
 
 Initial assumptions:
 
-git installed
-
+git installed?
+git --version
+if the answer is no:
 sudo apt update
 sudo apt install git
 git --version
@@ -108,6 +109,9 @@ dropping you back to the host console
 reconnect with docker-machine ssh CS-VM-03
 set the eth2 interface to an IPv4 address reachable from your LAN with
 ifconfig eth2 10.42.0.43 netmask 255.255.255.0
+-----------------------^
+note the host is 10.42.0.203
+the VM is 10.42.0.43
 
 you should now be able to ssh to the VM from your jump server with
 ssh rancher@10.42.0.43
