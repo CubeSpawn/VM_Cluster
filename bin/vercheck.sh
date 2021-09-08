@@ -16,6 +16,6 @@ ansible --version
 echo "consul"
 consul --version
 echo "Terraform"
-terraform --versihhon
+terraform -version
 echo "VBoxManage"
 vboxmanage --version
