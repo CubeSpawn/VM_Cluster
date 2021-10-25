@@ -1,0 +1,60 @@
+
+---
+########################################################
+# SWARM: INSTALL DOCKER ENGINE
+########################################################
+- name: install and configure webservers
+  hosts: all
+  gather_facts: false
+
+  pre_tasks:
+  - name: Install python for Ansible
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python2-minimal python3-docker)
+    changed_when: False
+  - setup: # aka gather_facts
+
+  become: true # Changed in Ansible 2.x+
+  roles:
+    - geerlingguy.docker
+
+########################################################
+# SWARM: MASTER NODES
+########################################################
+- name: Init and Configure Master Nodes
+  hosts: managers
+  gather_facts: false
+
+  vars:
+    manager_ip: "10.42.0.201" # Choose any single IP from the list of Manager Nodes
+    docker_users:
+     - '{{ ansible_user }}'
+  
+  tasks:
+    - name: Init a new swarm with default parameters
+      docker_swarm:
+        state: present
+        advertise_addr: "{{ manager_ip }}:2377"
+      register: rezult
+
+    - name: "Add Token to a dummy host"
+      add_host:
+        name:   "JOIN_TOKEN_HOLDER"
+        token:  "{{ rezult.swarm_facts.JoinTokens.Worker }}"
+
+########################################################
+# SWARM: WORKER NODES
+########################################################
+- name: Add Worker Nodes
+  hosts: workers
+  gather_facts: false
+
+  vars:
+    manager_ip: "10.42.0.201" # Choose any single IP from the list of Manager Nodes
+
+  tasks:
+    - name: Add a Worker Nodes
+      docker_swarm:
+        state: join
+        join_token: "{{ hostvars['JOIN_TOKEN_HOLDER']['token'] }}"
+        advertise_addr: "{{ manager_ip }}"
+        remote_addrs: "{{ manager_ip }}:2377"
