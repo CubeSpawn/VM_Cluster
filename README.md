@@ -8,13 +8,15 @@ and
 the machine at 10.42.0.205 will be used for web interfaces
 whereas the one at 10.42.0.210 will be the jumpserver
 
-All machines have the following requirements
+The Jumpserver machines have the following requirements
 
-Git,
+Git, &
 
-Docker (installed via ansible),
+Ansible
 
-Ansible.
+whereas the worker nodes need:
+
+Docker (installed via ansible).
 
 this creates a Lab of 8 machines running as a docker swarm
 
@@ -24,7 +26,7 @@ on each machine:
 
 ssh-keygen -f "/home/$USER/.ssh/known_hosts" -R 10.42.0.2xx
 
-share them between all the machines
+share them between all the machines and the jumpserver
 ssh-copy-id $USER@10.42.0.2xx
 
 establish passwordless sudo on the swarm machines
