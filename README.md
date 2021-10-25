@@ -11,8 +11,10 @@ whereas the one at 10.42.0.210 will be the jumpserver
 All machines have the following requirements
 
 Git,
-Docker (installed via ansible)
-Ansible,
+
+Docker (installed via ansible),
+
+Ansible.
 
 this creates a Lab of 8 machines running as a docker swarm
 
